@@ -1,0 +1,13 @@
+.moviePoster {
+	height: 150px;
+	width: auto;
+	border: 2px black;
+}
+
+#movieList {
+	list-style: none;
+}
+
+.movieListings {
+	text-align: center;
+}
