@@ -1,7 +1,24 @@
 .moviePoster {
+	height: 281px;
+	margin-left: 15px;
+	border-radius: 10px;
+}
+
+.castPoster {
 	height: 150px;
 	width: auto;
-	border: 2px black;
+	border-radius: 10px;
+}
+
+.backdrop {
+	height:281px;
+	border-radius: 10px;
+}
+
+.castDiv {
+	text-align:center;
+	background-color:beige; 
+	border-radius:5px;
 }
 
 #movieList {
