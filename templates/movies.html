@@ -14,15 +14,29 @@
 	<script src="/static/movieJavascript.js"></script>
 </head>
 <body>
-	<div class="container">
-		<h1 id="movieTitle">Search Movies</h1>
-		<br><br>
-		<input id="title" type="text" name="title" placeholder="Movie Title">
-		<br><br>
-		<input id="movieType" type="text" name="movieType" placeholder="Movie Type">
-		<br><br>
-		<input class="submit-btn" type="button" name="submit" value="Submit">
-		<br>
+	<!-- Modal -->
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content modalDiv">
+	      <div class="modal-header">
+	        <h4 class="modal-title" id="myModalLabel"></h4>
+	      </div>
+	      <div class="modal-body"></div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	<div style="background-color: burlywood"class="container">
+		<div id="searchDiv" class="searchForm">
+			<h1 id="movieTitle">Search Movies</h1>
+			<br><br>
+			<input id="title" type="text" name="title" placeholder="Movie Title">
+			<br><br>
+			<input class="submit-btn" type="button" name="submit" value="Submit">
+			<br>
+		</div>
 		<ul id="movieList">
 			<div id="results"><div>
 		</ul>
