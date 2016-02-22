@@ -3,10 +3,12 @@ console.log("%c                                                 \n           __.
 $('#loginSubmit').on('click', function(){
 	var name = $("#loginName").val();
 	var password = $("#loginPassword").val();
+	console.log(name,password);
 });
 
 $('#registerSubmit').on('click', function(){
 	var name = $("#registerName").val();
 	var password = $("#registerPassword").val();
 	var avatarUrl = $("#registerAvatar").val();
+	console.log(name,password);
 });
