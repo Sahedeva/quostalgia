@@ -1,3 +1,23 @@
+/* base.html css */
+#brandImg {
+  height: 40px;
+  margin-top: -10px;
+  border-radius: 10px;
+}
+
+#headerDiv {
+  background: chocolate;
+  position: fixed;
+  width: 100%;
+  margin-top: -1px;
+  margin-left: -1px;
+}
+
+#registerLogin {
+  float: right;
+}
+
+/* movie listing */
 .moviePoster {
 	height: 281px;
 	margin-left: 15px;
@@ -7,6 +27,10 @@
 
 #searchDiv {
 	text-align: center;
+}
+
+.castCrewTitle {
+  color:silver!important;
 }
 
 .castPoster {

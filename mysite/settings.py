@@ -79,11 +79,11 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'django_db',
+        'NAME': 'movieDatabase',
         'USER': 'root',
         'PASSWORD': 'Grblfx9642',
-        'HOST': '',
-        'PORT': '',
+        'HOST': 'localhost',
+        'PORT': '3306',
     }
 }
 

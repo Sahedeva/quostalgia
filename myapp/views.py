@@ -1,11 +1,20 @@
 from django.shortcuts import render
 from django.template import RequestContext
 # Create your views here.
-def index(request):
-	return render(request, 'index.html')
+def base(request):
+	return render(request, 'base.html')
 
 def movies(request):
 	return render(request, 'movies.html')
+
+def tvShows(request):
+	return render(request, 'tvShows.html')
+
+def login(request):
+	return render(request, 'login.html')
+
+def register(request):
+	return render(request, 'register.html')
 
 # def movie(request):
 #     if request.method == 'POST':

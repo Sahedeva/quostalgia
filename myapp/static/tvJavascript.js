@@ -1,28 +1,6 @@
 $(document).ready(function() {
 console.log("%c                                                     \n             *     ,MMM8&&&.            *            \n                  MMMM88&&&&&    .                   \n                 MMMM88&&&&&&&                       \n     *           MMM88&&&&&&&&                       \n                 MMM88&&&&&&&&                       \n                 'MMM88&&&&&&'                       \n                 'MMM88&&&&&&'                       \n                   'MMM8&&&'      *                  \n          |\\___/|                                    \n          )     (             .              '       \n         =\\     /=                                   \n           )===(       *                             \n          /     \\                                    \n          /     \\                                    \n          |     |                                    \n         /       \\                                   \n         \\       /                                   \n  _/\\_/\\_/\\__  _/_/\\_/\\_/\\_/\\_/\\_/\\_/\\_/\\_/\\_        \n  |  |  |  |( (  |  |  |  |  |  |  |  |  |  |        \n  |  |  |  | ) ) |  |  |  |  |  |  |  |  |  |        \n  |  |  |  |(_(  |  |  |  |  |  |  |  |  |  |        \n  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |        \n  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |        \n  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |        \n                                                     \n         consoleCat - by Bob   (MEOW)                \n                                                     ","color:white; background-color:black;");
-console.log("%c                              \n                              \n                              \n                              \n                              \n                              \n                              \n                              \n                              \n                              \n                              \n                              \n                              \n                              \n                              \n                              \n","background-image:url(http://www.medhatspca.ca/sites/default/files/news_photos/2014-Apr-15/node-147/cute-little-cat.jpg);background-size: cover;color:transparent;");
-// console.log("                  MMMM88&&&&&    .");
-// console.log("                 MMMM88&&&&&&&");
-// console.log("                 MMM88&&&&&&&&");
-// console.log("                 MMM88&&&&&&&&");
-// console.log("                 'MMM88&&&&&&'");
-// console.log("                   'MMM8&&&'      *");
-// console.log("          |\\___/|");
-// console.log("          )     (             .              '");
-// console.log("         =\\     /=");
-// console.log("           )===(       *");
-// console.log("          /     \\");
-// console.log("          |     |");
-// console.log("         /       \\");
-// console.log("         \\       /");
-// console.log("  _/\\_/\\_/\\__  _/_/\\_/\\_/\\_/\\_/\\_/\\_/\\_/\\_/\\_");
-// console.log("  |  |  |  |( (  |  |  |  |  |  |  |  |  |  |");
-// console.log("  |  |  |  | ) ) |  |  |  |  |  |  |  |  |  |");
-// console.log("  |  |  |  |(_(  |  |  |  |  |  |  |  |  |  |");
-// console.log("  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |");
-// console.log("  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |");
-// console.log("                                                       ");
-// console.log("         consoleCat - by Bob   (MEOW)");
+
 	$('.submit-btn').on('click', function(){
 		var title = $('#title').val();
 		console.log('title',title);
@@ -34,7 +12,7 @@ console.log("%c                              \n                              \n 
     console.log(" ");
     console.log("            consoleCat - by Bob");
     $.ajax({
-      url: "http://api.themoviedb.org/3/search/movie?api_key=5da4693192fc98b8390ac6cebfc81c82&query="+title,
+      url: "http://api.themoviedb.org/3/search/tv?api_key=5da4693192fc98b8390ac6cebfc81c82&query="+title,
       dataType: "json",
       method: "GET",
       success: function(data, textStatus, jqXHR){
@@ -42,7 +20,7 @@ console.log("%c                              \n                              \n 
         for (i=0;i<data['results'].length;i++){
           var movieId = data['results'][i]['id'];
           $.ajax({
-            url: "http://api.themoviedb.org/3/movie/"+movieId+"?api_key=5da4693192fc98b8390ac6cebfc81c82&append_to_response=credits",
+            url: "http://api.themoviedb.org/3/tv/"+movieId+"?api_key=5da4693192fc98b8390ac6cebfc81c82&append_to_response=credits",
             dataType: "json",
             method: "GET",
             success: function(data, textStatus, jqXHR){
