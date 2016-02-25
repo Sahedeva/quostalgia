@@ -12,6 +12,7 @@ console.log("%c                                                     \n          
       method: "GET",
       success: function(data, textStatus, jqXHR){
         console.log("Success");
+        console.log(data);
         for (i=0;i<data['results'].length;i++){
           var movieId = data['results'][i]['id'];
           $.ajax({
@@ -19,6 +20,7 @@ console.log("%c                                                     \n          
             dataType: "json",
             method: "GET",
             success: function(data, textStatus, jqXHR){
+            	console.log(data);
               var resultStr ="<li class='movieListings'><h2 style='color:yellow!important; text-shadow: 2px 2px 2px black;'>"+data['name']+"</h2>";
               if (data['original_name']) {
               	if(data['original_name']!=data['name']){
@@ -218,17 +220,24 @@ console.log("%c                                                     \n          
                 }
               }
           	}
-          	resultStr +="<br></div><h2 style='text-align:center; color:yellow;font-weight:bold;'>Episodes</h2><div class='castDiv'>"
+          	resultStr +="<br></div><h2 style='text-align:center; color:yellow;font-weight:bold;'>Episodes</h2><div class='episodeDiv'>"
             	var numSeasons = data['seasons'].length;
             	var tvShowId = data['id'];
-            	for (var j=0;j<numSeasons-1;j++){
+            	for (var j=0;j<numSeasons;j++){
             		var seasonId = data['seasons'][j]['id'];
-            		resultStr += "<h2 style='text-align:center; color:blueviolet;font-weight:bold;'><br>Season "+(j+1)+"</h2>"
+            		var seasonNum = data['seasons'][j]['season_number'];
+            		resultStr += "<h2 style='text-align:center; color:blueviolet;font-weight:bold;'><br>Season "+seasonNum+"</h2>"
+            	if (data['seasons'][j]['poster_path']==null) {
+                resultStr +="<img class='moviePoster' src='/static/images/posterNull.png'/>";
+              } else {
+                resultStr +="<img class='moviePoster' src='http://image.tmdb.org/t/p/w500/"+data['seasons'][j]['poster_path']+"'/>";
+              }	
               $.ajax({
-              	url: "http://api.themoviedb.org/3/tv/"+data['id']+"/season/"+(j+1)+"?api_key=5da4693192fc98b8390ac6cebfc81c82",
+              	url: "http://api.themoviedb.org/3/tv/"+data['id']+"/season/"+seasonNum+"?api_key=5da4693192fc98b8390ac6cebfc81c82",
                 dataType: "json",
                 method: "GET",
                 success: function(data, textStatus, jqXHR){
+                	console.log(data);
                   if (data['episodes'].length!=0){
 			              for (i=0;i<data['episodes'].length;i++) {
 			                if(i%3==0){
@@ -305,7 +314,7 @@ console.log("%c                                                     \n          
                       var easyDate = date+"-"+year;
                     }
                     $('.modal-title').html(data['name']);
-                    var bodyStr = "<div style='max-height:575px;overflow:auto;'><div class='row'><div class='col-xs-12'>"
+                    var bodyStr = "<div style='max-height:575px;overflow-y:auto;overflow-x:hidden;'><div class='row'><div class='col-xs-12'>"
                     if (data['still_path']==null) {
                       bodyStr += "<img style='display:block;margin:auto;' class='castPoster' src='/static/images/nullImage.jpg'/></div>";
                     } else {
@@ -380,7 +389,7 @@ console.log("%c                                                     \n          
 			                    } else {
 			                      var biography = data['biography'];
 			                    }
-			                    bodyStr += "<div style='max-height:595px;overflow:auto;' class='col-xs-9'><div style='font-weight:bold' class='row'><div class='col-xs-12'><span style='font-weight: bold; color: blue'>Place of birth: </span>"+birthPlace+"</div><div class='col-xs-12'><span style='font-weight:bold; color:blue'>Birthday: </span>"+easyDate+"</div><div class='col-xs-12'><span style='font-weight: bold; color: blue'>Biography: </span>"+biography+"</div></div></div>";
+			                    bodyStr += "<div style='max-height:595px;overflow:auto;margin-left: -10px;' class='col-xs-9'><div style='font-weight:bold' class='row'><div class='col-xs-12'><span style='font-weight: bold; color: blue'>Place of birth: </span>"+birthPlace+"</div><div class='col-xs-12'><span style='font-weight:bold; color:blue'>Birthday: </span>"+easyDate+"</div><div class='col-xs-12'><span style='font-weight: bold; color: blue'>Biography: </span>"+biography+"</div></div></div>";
 			                    $('.guestBody').html(bodyStr);
 			                  },
 			                });

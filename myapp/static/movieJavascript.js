@@ -166,7 +166,7 @@ console.log("%c                                                     \n          
                 if(i%6==0){
                   resultStr +="<div style='height: 220px max-height:220px overflow:auto' class='row'>"
                 }
-                resultStr += "<div style='margin-left:5px;' class='col-xs-2'>";
+                resultStr += "<div class='col-xs-2'>";
                 if (data['credits']['cast'][i]['profile_path']==null) {
                   resultStr += "<img class='castPoster' src='/static/images/nullImage.jpg'/>"
                 } else {
