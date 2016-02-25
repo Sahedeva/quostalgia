@@ -1,28 +1,6 @@
 $(document).ready(function() {
 console.log("%c                                                     \n             *     ,MMM8&&&.            *            \n                  MMMM88&&&&&    .                   \n                 MMMM88&&&&&&&                       \n     *           MMM88&&&&&&&&                       \n                 MMM88&&&&&&&&                       \n                 'MMM88&&&&&&'                       \n                 'MMM88&&&&&&'                       \n                   'MMM8&&&'      *                  \n          |\\___/|                                    \n          )     (             .              '       \n         =\\     /=                                   \n           )===(       *                             \n          /     \\                                    \n          /     \\                                    \n          |     |                                    \n         /       \\                                   \n         \\       /                                   \n  _/\\_/\\_/\\__  _/_/\\_/\\_/\\_/\\_/\\_/\\_/\\_/\\_/\\_        \n  |  |  |  |( (  |  |  |  |  |  |  |  |  |  |        \n  |  |  |  | ) ) |  |  |  |  |  |  |  |  |  |        \n  |  |  |  |(_(  |  |  |  |  |  |  |  |  |  |        \n  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |        \n  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |        \n  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |        \n                                                     \n         consoleCat - by Bob   (MEOW)                \n                                                     ","color:white; background-color:black;");
-console.log("%c                              \n                              \n                              \n                              \n                              \n                              \n                              \n                              \n                              \n                              \n                              \n                              \n                              \n                              \n                              \n                              \n","background-image:url(http://www.medhatspca.ca/sites/default/files/news_photos/2014-Apr-15/node-147/cute-little-cat.jpg);background-size: cover;color:transparent;");
-// console.log("                  MMMM88&&&&&    .");
-// console.log("                 MMMM88&&&&&&&");
-// console.log("                 MMM88&&&&&&&&");
-// console.log("                 MMM88&&&&&&&&");
-// console.log("                 'MMM88&&&&&&'");
-// console.log("                   'MMM8&&&'      *");
-// console.log("          |\\___/|");
-// console.log("          )     (             .              '");
-// console.log("         =\\     /=");
-// console.log("           )===(       *");
-// console.log("          /     \\");
-// console.log("          |     |");
-// console.log("         /       \\");
-// console.log("         \\       /");
-// console.log("  _/\\_/\\_/\\__  _/_/\\_/\\_/\\_/\\_/\\_/\\_/\\_/\\_/\\_");
-// console.log("  |  |  |  |( (  |  |  |  |  |  |  |  |  |  |");
-// console.log("  |  |  |  | ) ) |  |  |  |  |  |  |  |  |  |");
-// console.log("  |  |  |  |(_(  |  |  |  |  |  |  |  |  |  |");
-// console.log("  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |");
-// console.log("  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |");
-// console.log("                                                       ");
-// console.log("         consoleCat - by Bob   (MEOW)");
+
 	$('.submit-btn').on('click', function(){
 		var title = $('#title').val();
 		console.log('title',title);
@@ -83,7 +61,7 @@ console.log("%c                              \n                              \n 
                   soundCrewArray.push(data['credits']['crew'][i]);
                 }
               }
-              resultStr += "<h3 style='text-align:center; color:black; padding-top:8px;'>Directing Department</h3>";
+              resultStr += "<br><h3 style='text-align:center;color:green;text-shadow:1px 1px 1px black;margin-top:5px;'>Directing Department</h3>";
               for (i=0;i<directingCrewArray.length;i++) {
                 if(i%6==0){
                   resultStr +="<div style='height: 220px max-height:220px overflow:auto' class='row'>"
@@ -103,12 +81,12 @@ console.log("%c                              \n                              \n 
                 } else {
                   resultStr +="<img class='castPoster' src='http://image.tmdb.org/t/p/w500/"+directingCrewArray[i]['profile_path']+"'/>"
                 }
-                resultStr += "<br><span class='castCrewTitle'>"+directingCrewArray[i]['job']+"</span><br><button type='button' class='castName' data-toggle='modal' data-target='#myModal' style='color:blue!important; border-radius:20px;' title='"+directingCrewArray[i]['id']+"'>"+directingCrewArray[i]['name']+"</button></div>";
+                resultStr += "<br><span class='castCrewTitle'>"+directingCrewArray[i]['job']+"</span><br><button type='button' class='castName' data-toggle='modal' data-target='#myModal' style='color:blue!important; border-radius:20px;max-width:115px;' title='"+directingCrewArray[i]['id']+"'>"+directingCrewArray[i]['name']+"</button></div>";
                 if((i+1)%6==0||i==(directingCrewArray.length-1)){
                   resultStr +="</div>"
                 }
               }
-              resultStr += "<h3 style='text-align:center; color:black;'>Writing Department</h3>";
+              resultStr += "<br><h3 style='text-align:center;color:green;text-shadow:1px 1px 1px black;margin-top:5px;'>Writing Department</h3>";
               for (i=0;i<writingCrewArray.length;i++) {
                 if(i%6==0){
                   resultStr +="<div style='height: 220px max-height:220px overflow:auto' class='row'>"
@@ -128,12 +106,12 @@ console.log("%c                              \n                              \n 
                 } else {
                   resultStr +="<img class='castPoster' src='http://image.tmdb.org/t/p/w500/"+writingCrewArray[i]['profile_path']+"'/>"
                 }
-                resultStr += "<br><span class='castCrewTitle'>"+writingCrewArray[i]['job']+"</span><br><button type='button' class='castName' data-toggle='modal' data-target='#myModal' style='color:blue!important; border-radius:20px;' title='"+writingCrewArray[i]['id']+"'>"+writingCrewArray[i]['name']+"</button></div>";
+                resultStr += "<br><span class='castCrewTitle'>"+writingCrewArray[i]['job']+"</span><br><button type='button' class='castName' data-toggle='modal' data-target='#myModal' style='color:blue!important; border-radius:20px;max-width:115px;' title='"+writingCrewArray[i]['id']+"'>"+writingCrewArray[i]['name']+"</button></div>";
                 if((i+1)%6==0||i==(writingCrewArray.length-1)){
                   resultStr +="</div>"
                 }
               }
-              resultStr += "<h3 style='text-align:center; color:black;'>Production Department</h3>";
+              resultStr += "<h3 style='text-align:center;color:green;text-shadow:1px 1px 1px black;margin-top:5px;'>Production Department</h3>";
               for (i=0;i<producingCrewArray.length;i++) {
                 if(i%6==0){
                   resultStr +="<div style='height: 220px max-height:220px overflow:auto' class='row'>"
@@ -153,12 +131,12 @@ console.log("%c                              \n                              \n 
                 } else {
                   resultStr +="<img class='castPoster' src='http://image.tmdb.org/t/p/w500/"+producingCrewArray[i]['profile_path']+"'/>"
                 }
-                resultStr += "<br><span class='castCrewTitle'>"+producingCrewArray[i]['job']+"</span><br><button type='button' class='castName' data-toggle='modal' data-target='#myModal' style='color:blue!important; border-radius:20px;' title='"+producingCrewArray[i]['id']+"'>"+producingCrewArray[i]['name']+"</button></div>";
+                resultStr += "<br><span class='castCrewTitle'>"+producingCrewArray[i]['job']+"</span><br><button type='button' class='castName' data-toggle='modal' data-target='#myModal' style='color:blue!important; border-radius:20px;max-width:115px;' title='"+producingCrewArray[i]['id']+"'>"+producingCrewArray[i]['name']+"</button></div>";
                 if((i+1)%6==0||i==(producingCrewArray.length-1)){
                   resultStr +="</div>"
                 }
               }
-              resultStr += "<h3 style='text-align:center; color:black;'>Sound Department</h3>";
+              resultStr += "<br><h3 style='text-align:center;color:green;text-shadow:1px 1px 1px black;margin-top:5px;'>Sound Department</h3>";
               for (i=0;i<soundCrewArray.length;i++) {
                 if(i%6==0){
                   resultStr +="<div style='height: 220px max-height:220px overflow:auto' class='row'>"
@@ -178,7 +156,7 @@ console.log("%c                              \n                              \n 
                 } else {
                   resultStr +="<img class='castPoster' src='http://image.tmdb.org/t/p/w500/"+soundCrewArray[i]['profile_path']+"'/>"
                 }
-                resultStr += "<br><span class='castCrewTitle'>"+soundCrewArray[i]['job']+"</span><br><button type='button' class='castName' data-toggle='modal' data-target='#myModal' style='color:blue!important; border-radius:20px;' title='"+soundCrewArray[i]['id']+"'>"+soundCrewArray[i]['name']+"</button></div>";
+                resultStr += "<br><span class='castCrewTitle'>"+soundCrewArray[i]['job']+"</span><br><button type='button' class='castName' data-toggle='modal' data-target='#myModal' style='color:blue!important; border-radius:20px;max-width:115px;' title='"+soundCrewArray[i]['id']+"'>"+soundCrewArray[i]['name']+"</button></div>";
                 if((i+1)%6==0||i==(soundCrewArray.length-1)){
                   resultStr +="</div>"
                 }
@@ -188,13 +166,13 @@ console.log("%c                              \n                              \n 
                 if(i%6==0){
                   resultStr +="<div style='height: 220px max-height:220px overflow:auto' class='row'>"
                 }
-                resultStr += "<div class='col-xs-2'>";
+                resultStr += "<div style='margin-left:5px;' class='col-xs-2'>";
                 if (data['credits']['cast'][i]['profile_path']==null) {
                   resultStr += "<img class='castPoster' src='/static/images/nullImage.jpg'/>"
                 } else {
                   resultStr +="<img class='castPoster' src='http://image.tmdb.org/t/p/w500/"+data['credits']['cast'][i]['profile_path']+"'/>"
                 }
-                resultStr += "<br><span class='castCrewTitle'>"+data['credits']['cast'][i]['character']+"</span><br><button type='button' class='castName' data-toggle='modal' data-target='#myModal' style='color:blue!important; border-radius:20px;' title='"+data['credits']['cast'][i]['id']+"'>"+data['credits']['cast'][i]['name']+"</button></div>";
+                resultStr += "<br><span class='castCrewTitle'>"+data['credits']['cast'][i]['character']+"</span><br><button type='button' class='castName' data-toggle='modal' data-target='#myModal' style='color:blue!important; border-radius:20px;max-width:115px;' title='"+data['credits']['cast'][i]['id']+"'>"+data['credits']['cast'][i]['name']+"</button></div>";
                 if((i+1)%6==0||i==(data['credits']['cast'].length-1)){
                   resultStr +="</div>"
                 }

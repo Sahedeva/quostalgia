@@ -18,12 +18,36 @@
   float: right;
 }
 
+.navFont {
+  font-family:Lora;
+  font-size:20px;
+}
+
+.navbar-default .navbar-nav>li>a {
+    color: yellow;
+}
+
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+    color: 006600;
+    font-weight: bold;
+}
+
 /* movie listing */
+#results {
+  position:relative;
+  left:-21px;
+}
 .moviePoster {
 	height: 281px;
 	margin-left: 15px;
 	border-radius: 10px;
 	box-shadow: 2px 1px 1px black;
+}
+
+#overview {
+  font-weight: bold;
+  max-width:700px;
+  margin: auto;
 }
 
 #searchDiv {
@@ -32,6 +56,21 @@
 
 .castCrewTitle {
   color:silver!important;
+  max-width:115px;
+  margin:auto;
+}
+
+.guestStarTitle {
+  color: red;
+  max-width:115px;
+  text-align: center;
+  word-wrap: break-word;
+}
+
+.guestStarName {
+  max-width:115px;
+  text-align: center;
+  word-wrap: break-word;
 }
 
 .castPoster {
@@ -40,6 +79,15 @@
 	border-radius: 10px;
 	box-shadow: 2px 1px 1px black;
 	margin-top: 10px;
+}
+
+.guestCastPoster {
+  margin-left: 9px;
+  height: 150px;
+  width: auto;
+  border-radius: 10px;
+  box-shadow: 2px 1px 1px black;
+  margin-top: 10px;
 }
 
 .backdrop {
@@ -58,6 +106,7 @@
 	text-align:center;
 	background-color:saddlebrown; 
 	border-radius:5px;
+  padding-top: 1px;
 }
 
 #movieList {
@@ -72,10 +121,18 @@
 .modalDiv {
 	background-color: silver;
 	border-radius: 10px;
+  margin-top:-25px;
 }
 
 .modal-title {
 	background-color: gray;
+  text-align: center;
+  color: palegreen;
+  border-radius: 10px;
+}
+
+.guestTitle {
+  background-color: gray;
   text-align: center;
   color: palegreen;
   border-radius: 10px;
@@ -149,7 +206,9 @@ a.close:hover {
   background-color: grey;
   min-height: 607px;
   margin-top:-20px;
+  font-family:Lora;
 }
+
 #register, #login {
   text-align: center;
   background-color: burlywood;

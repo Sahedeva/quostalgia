@@ -3,6 +3,7 @@ console.log("%c                                                 \n           __.
 $('#loginForm').on('submit', function(){
 	var name = $("#loginName").val();
 	var password = $("#loginPassword").val();
+	
 	console.log(name,password);
 	return false;
 });

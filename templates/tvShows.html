@@ -9,23 +9,40 @@
 	        <h4 class="modal-title" id="myModalLabel"></h4>
 	      </div>
 	      <div class="modal-body"></div>
-	      <div class="modal-footer">
-	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	      <div style="height:50px;" class="modal-footer">
+	        <button style="margin-top:-8px;" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 	      </div>
 	    </div>
 	  </div>
 	</div>
+	<div class="modal fade" id="guestModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content modalDiv">
+	      <div class="modal-header">
+	        <h4 class="guestTitle" id="myModalLabel"></h4>
+	      </div>
+	      <div class="guestBody"></div>
+	      <div style="height:50px;" class="modal-footer">
+	        <button style="margin-top:-8px;" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+<div class="backgroundDiv">
 	<div style="background-color: burlywood"class="container">
 		<div id="searchDiv" class="searchForm">
 			<h1 id="movieTitle">Search TV Shows</h1>
-			<br><br>
-			<input id="title" type="text" name="title" placeholder="Movie Title">
-			<br><br>
-			<input class="submit-btn" type="button" name="submit" value="Submit">
-			<br>
+			<form id="searchForm">
+				<br><br>
+				<input id="title" type="text" name="title" placeholder="TV Series Title">
+				<br><br>
+				<input id="submitButton" class="submit-btn" type="submit" name="submit" value="Submit">
+				<br>
+			</form>
 		</div>
 		<ul id="movieList">
 			<div id="results"><div>
 		</ul>
 	</div>
+</div>
 {%endblock%}
