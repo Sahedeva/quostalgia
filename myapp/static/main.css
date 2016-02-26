@@ -37,6 +37,7 @@
   position:relative;
   left:-21px;
 }
+
 .moviePoster {
 	height: 281px;
 	margin-left: 15px;
@@ -81,6 +82,16 @@
 	margin-top: 10px;
 }
 
+.seasonDiv {
+  text-align:center;
+}
+
+.seasonPoster {
+  height: 281px;
+  border-radius: 10px;
+  box-shadow: 2px 1px 1px black;
+}
+
 .guestCastPoster {
   margin-left: 9px;
   height: 150px;
@@ -121,6 +132,16 @@
 
 .movieListings {
 	text-align: center;
+}
+
+/* tv listing */
+#title {
+  border-radius: 10px;
+  padding-left: 5px;
+}
+
+#submitButton {
+  border-radius: 10px;
 }
 
 /* modal css */
@@ -215,7 +236,7 @@ a.close:hover {
 /* register and login css */
 .backgroundDiv {
   background-color: grey;
-  min-height: 607px;
+  min-height: 692px;
   margin-top:-20px;
   font-family:Lora;
 }

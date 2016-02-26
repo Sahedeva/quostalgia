@@ -25,7 +25,7 @@ SECRET_KEY = '*17%4*w36lr3dm5itfz+ui%()x(x1+%81x9gb=#s*q(j2o6mgo'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -79,18 +79,26 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 import dj_database_url
 # db_from_env = dj_database_url.config(conn_max_age=500)
 # DATABASES['default'].update(db_from_env)
-DATABASES = {'default': dj_database_url.config()}
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'movieDatabase',
-#         'USER': 'root',
-#         'PASSWORD': 'Grblfx9642',
-#         'HOST': 'localhost',
-#         'PORT': '3306',
-#     }
-# }
+# DATABASES = {'default': dj_database_url.config()}
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'movieDatabase',
+        'USER': 'root',
+        'PASSWORD': 'Grblfx9642',
+        'HOST': 'localhost',
+        'PORT': '3306',
+    }
+}
 
+# Honor the 'X-Forwarded-Proto' header for request.is_secure()
+# SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+# try to load local_settings.py if it exists
+# try:
+  # from local_settings import *
+# except Exception as e:
+  # pass
 
 # Password validation
 # https://docs.djangoproject.com/en/1.9/ref/settings/#auth-password-validators
@@ -128,16 +136,16 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
-PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
+# PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 
-STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
+# STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
 STATIC_URL = '/static/'
 
 # Extra places for collectstatic to find static files.
-STATICFILES_DIRS = (
-    os.path.join(PROJECT_ROOT, 'static'),
-)
+# STATICFILES_DIRS = (
+    # os.path.join(PROJECT_ROOT, 'static'),
+# )
 # Simplified static file serving.
 # https://warehouse.python.org/project/whitenoise/
 
-STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+# STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'

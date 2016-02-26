@@ -20,7 +20,7 @@ console.log("%c                                                     \n          
             dataType: "json",
             method: "GET",
             success: function(data, textStatus, jqXHR){
-            	console.log(data);
+            	console.log('tv/id/credits: ',data);
               var resultStr ="<li class='movieListings'><h2 style='color:yellow!important; text-shadow: 2px 2px 2px black;'>"+data['name']+"</h2>";
               if (data['original_name']) {
               	if(data['original_name']!=data['name']){
@@ -220,25 +220,52 @@ console.log("%c                                                     \n          
                 }
               }
           	}
-          	resultStr +="<br></div><h2 style='text-align:center; color:yellow;font-weight:bold;'>Episodes</h2><div class='episodeDiv'>"
-            	var numSeasons = data['seasons'].length;
-            	var tvShowId = data['id'];
-            	for (var j=0;j<numSeasons;j++){
-            		var seasonId = data['seasons'][j]['id'];
-            		var seasonNum = data['seasons'][j]['season_number'];
-            		resultStr += "<h2 style='text-align:center; color:blueviolet;font-weight:bold;'><br>Season "+seasonNum+"</h2>"
-            	if (data['seasons'][j]['poster_path']==null) {
-                resultStr +="<img class='moviePoster' src='/static/images/posterNull.png'/>";
-              } else {
-                resultStr +="<img class='moviePoster' src='http://image.tmdb.org/t/p/w500/"+data['seasons'][j]['poster_path']+"'/>";
-              }	
-              $.ajax({
-              	url: "http://api.themoviedb.org/3/tv/"+data['id']+"/season/"+seasonNum+"?api_key=5da4693192fc98b8390ac6cebfc81c82",
-                dataType: "json",
-                method: "GET",
-                success: function(data, textStatus, jqXHR){
-                	console.log(data);
-                  if (data['episodes'].length!=0){
+          	var numSeasons = data['seasons'].length;
+          	var tvShowId = data['id'];
+          	for (var j=0;j<numSeasons;j++){
+          		var seasonId = data['seasons'][j]['id'];
+          		var seasonNum = data['seasons'][j]['season_number'];	
+	            $.ajax({
+	            	url: "http://api.themoviedb.org/3/tv/"+data['id']+"/season/"+seasonNum+"?api_key=5da4693192fc98b8390ac6cebfc81c82&append_to_response=credits",
+	              dataType: "json",
+	              method: "GET",
+	              success: function(data, textStatus, jqXHR){
+	              	console.log('tv/id/season/season#/credits: ',data);
+	              	resultStr +="<br></div><h2 style='text-align:center; color:yellow;font-weight:bold;'>"+data['name']+"</h2>"
+	              	if (data['poster_path']==null) {
+		                resultStr +="<div class='seasonDiv'><img class='seasonPoster' src='/static/images/posterNull.png'/></div>";
+		              } else {
+		                resultStr +="<div class='seasonDiv'><img class='seasonPoster' src='http://image.tmdb.org/t/p/w500/"+data['poster_path']+"'/></div>";
+		              }
+		              if (data['credits']['cast'].length!=0){
+			              resultStr +="<br></div><h2 style='text-align:center; color:yellow;font-weight:bold;'>Cast</h2><div class='castDiv'>";
+			              for (i=0;i<data['credits']['cast'].length;i++) {
+			                if(i%6==0){
+			                  resultStr +="<div style='height: 220px max-height:220px overflow:auto' class='row'>"
+			                }
+			                if (data['credits']['cast'].length==5&&i==0) {
+				                  resultStr += "<div class='col-xs-1'></div>";
+				                  resultStr += "<div class='col-xs-2'>";
+				                } else if (data['credits']['cast'].length==5){
+				                  resultStr += "<div class='col-xs-2'>";
+				                } else if (data['credits']['cast'].length<6) {
+				                  resultStr += "<div class='col-xs-"+12/(data['credits']['cast'].length)+"'>";
+				                } else {
+				                  resultStr += "<div class='col-xs-2'>";
+				                }
+			                if (data['credits']['cast'][i]['profile_path']==null) {
+			                  resultStr += "<img class='castPoster' src='/static/images/nullImage.jpg'/>"
+			                } else {
+			                  resultStr +="<img class='castPoster' src='http://image.tmdb.org/t/p/w500/"+data['credits']['cast'][i]['profile_path']+"'/>"
+			                }
+			                resultStr += "<br><div class='castCrewTitle'>"+data['credits']['cast'][i]['character']+"</div><br><button type='button' class='castName' data-toggle='modal' data-target='#myModal' style='color:blue!important; border-radius:20px;max-width:115px;margin-top:-15px;' title='"+data['credits']['cast'][i]['id']+"'>"+data['credits']['cast'][i]['name']+"</button></div>";
+			                if((i+1)%6==0||i==(data['credits']['cast'].length-1)){
+			                  resultStr +="</div>"
+			                }
+			              }
+			          	}	
+	              	resultStr += "</div><br><h2 style='text-align:center; color:yellow;font-weight:bold;'>Episodes</h2><div class='episodeDiv'>";
+	                if (data['episodes'].length!=0){
 			              for (i=0;i<data['episodes'].length;i++) {
 			                if(i%3==0){
 			                  resultStr +="<div style='height: 220px max-height:220px overflow:auto' class='row'>"
@@ -256,10 +283,10 @@ console.log("%c                                                     \n          
 			              }
 			              // console.log('resultStr after episode for loop', resultStr);
 			          	}
-                },
-                async:false
-              });
-	            }
+	              },
+	              async:false
+	            });
+	          }
               $("#results").append(resultStr);
               $(".castName").on('click', function(){
                 var personId = $(this).attr('title');
