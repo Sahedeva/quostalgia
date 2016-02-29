@@ -3,8 +3,14 @@ console.log("%c                                                 \n           __.
 $('#loginForm').on('submit', function(){
 	var name = $("#loginName").val();
 	var password = $("#loginPassword").val();
-	
 	console.log(name,password);
+	// $.ajax({
+ //      url: ,
+ //      dataType: "json",
+ //      method: "GET",
+ //      success: function(data, textStatus, jqXHR){
+ //        console.log("Success");
+ //        console.log(data);
 	return false;
 });
 

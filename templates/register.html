@@ -1,22 +1,18 @@
 {% extends "base.html" %}
+
 {%block content%}
+
 <div class="backgroundDiv">
-	<div id = "login" class="container">	
-		<h1>Register</h1>
-		<form id = "registerForm">
-			<input class="logRegForm" id="registerName" type="text" placeholder="User Name"/>
-			<br>
-			<br>
-			<input class="logRegForm" id="registerPassword" type="password" placeholder="Password"/>
-			<br>
-			<br>
-			<input class="logRegForm" id="registerAvatar" type="text" placeholder="Avatar Url"/>
-			<br>
-			<br>
-			<input class="logRegForm" id="registerSubmit" type="submit" placeholder="Submit"/>
-			<br>
-		</form>
+	<div id = "login" class="container">
+	<h1>Registration Form</h1>
+	<form id="RegistrationForm" name="RegisterForm" action="/accounts/register/" method="post">{% csrf_token %}
+	{{form}}
+	{{form.errors}}
+	<p>Note: password must be at least 8 characters in length!</p>
+	<p>Note: only username and passwords are required</p>
+	<input style="border-radius: 5px; color:green;" type="submit" value="Register" />
+
+	</form>
 	</div>
 </div>
-<script src="/static/registerLogin.js"></script>
-{%endblock%}
+{% endblock %}

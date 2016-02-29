@@ -1,19 +1,22 @@
 {% extends "base.html" %}
+
 {%block content%}
 <div class="backgroundDiv">
 	<div id = "login" class="container">
-		<h1>Login</h1>
-		<form id="loginForm">
-			<input class="logRegForm" id="loginName" type="text" placeholder="User Name"/>
-			<br>
-			<br>
-			<input class="logRegForm" id="loginPassword" type="password" placeholder="Password"/>
-			<br>
-			<br>
-			<input class="logRegForm" type="submit" placeholder="Submit"/>
-			<br>
-		</form>
+	{% if form.errors %}
+		<p class="error">Sorry, that's not a valid username or password</p>
+	{% endif %}
+	<h2>Login Form</h2>
+	<form id="loginForm" action="/accounts/auth/" method="post">{% csrf_token %}
+		<label for="username">User name:</label>
+		<input type="text" name="username" value="" id="id_username">
+		<label for="password">Password:</label>
+		<input type="password" name="password" value="" id="id_password1">
+		<br>
+		<br>
+		<input style="border-radius: 5px; color:green;" type="submit" value="login" />
+	</form>
 	</div>
 </div>
-<script src="/static/registerLogin.js"></script>
-{%endblock%}
+
+{% endblock %}

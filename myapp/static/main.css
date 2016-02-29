@@ -32,6 +32,10 @@
     font-weight: bold;
 }
 
+#navUsername {
+  color:rebeccapurple!important;
+}
+
 /* movie listing */
 #results {
   position:relative;
@@ -53,6 +57,7 @@
 
 #searchDiv {
 	text-align: center;
+  padding-top: 50px;
 }
 
 .castCrewTitle {
@@ -241,13 +246,34 @@ a.close:hover {
   font-family:Lora;
 }
 
+.helptext {
+  display: block;
+}
+
+#id_username, #id_email, #id_password1, #id_password2, #id_first_name,#id_last_name {
+  border-radius:10px;
+  width: 50%;
+  padding-left: 7px;
+}
+
+#registrationForm {
+  display: inline-block;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  font-size: 20px;
+  color: blue;
+}
+
 #register, #login {
   text-align: center;
   background-color: burlywood;
   box-shadow: 2px 2px 2px black;
   position: relative;
   top: 40px;
-  width: 35%;
+  width: 37%;
 }
 
 .logRegForm {

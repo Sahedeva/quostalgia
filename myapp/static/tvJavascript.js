@@ -21,7 +21,7 @@ console.log("%c                                                     \n          
             method: "GET",
             success: function(data, textStatus, jqXHR){
             	console.log('tv/id/credits: ',data);
-              var resultStr ="<li class='movieListings'><h2 style='color:yellow!important; text-shadow: 2px 2px 2px black;'>"+data['name']+"</h2>";
+              var resultStr ="<li class='movieListings'><h2 style='color:yellow!important; text-shadow: 2px 2px 2px black;'>"+data['name']+"</h2><form style='display:none;' class='quoteCommentButton'><input type='checkbox' name='gender' value='other'> Tag this for quote/comment</form><div class='tvInfo'>";
               if (data['original_name']) {
               	if(data['original_name']!=data['name']){
               		resultStr +="<h4>Original Name: <span style='color:red!important; text-shadow: 2px 2px 2px black;font-size:22px;'>"+data['original_name']+"</span></h4>"
@@ -48,7 +48,7 @@ console.log("%c                                                     \n          
                       var easyDate = date+"-"+year;
                     }
               resultStr += "<h5>Last air date: "+easyDate+"</h5>";
-							resultStr += "<h5>Status: "+data['status']+"</h5>";
+							resultStr += "<h5>Status: "+data['status']+"</h5></div>";
               if (data['backdrop_path']==null) {
                 resultStr +="<img class='backdrop' src='/static/images/backdropNull.png'/>";
               } else {
@@ -59,13 +59,13 @@ console.log("%c                                                     \n          
               } else {
                 resultStr +="<img class='moviePoster' src='http://image.tmdb.org/t/p/w500/"+data['poster_path']+"'/>";
               }
-              resultStr += "<br>";
+              resultStr += "<br><div class='tvInfo'>";
               if (data['homepage']) {
                 resultStr +="<br><a style='font-size:20px' target='_blank' href='"+data['homepage']+"'>"+data['homepage']+"</a><br>";
               }
-              resultStr +="<h4 id='overview'><br>"+data['overview']+"</h4></li>";
+              resultStr +="<h4 id='overview'><br>"+data['overview']+"</h4></li></div>";
               if (data['seasons']) {
-              	resultStr +="<h4 style='text-align:center;'>Number of Seasons: "+data['seasons'].length+"</h4>"
+              	resultStr +="<div class='tvInfo'><h4 style='text-align:center;'>Number of Seasons: "+data['seasons'].length+"</h4></div>"
               }
               if (data['credits']['crew'].length!=0){
               	resultStr += "<h2 style='text-align:center;color:yellow;font-weight:bold;'>Crew</h2><div class='crewDiv'>";
