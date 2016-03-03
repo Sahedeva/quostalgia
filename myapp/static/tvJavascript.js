@@ -39,7 +39,8 @@ console.log("%c                                                     \n          
             		resultStr += "<li><a href='#"+entriesId[i]+"'>"+entriesName[i]+"</a></li>";
             	}
             	resultStr += "</ol></div>";
-              resultStr += "<li class='movieListings'><h2 id='"+data['id']+"' style='color:yellow!important; text-shadow: 2px 2px 2px black;'>"+data['name']+"</h2><form style='display:none;' class='quoteCommentButton'><input type='checkbox' name='gender' value='other'> Tag this for quote/comment</form><div class='tvInfo'>";
+              resultStr += "<li class='movieListings'>"
+              resultStr += "<div id='"+data['id']+"'></div><h2 style='color:yellow!important; text-shadow: 2px 2px 2px black;'>"+data['name']+"</h2><form style='display:none;' class='quoteCommentButton'><input type='checkbox' name='gender' value='other'> Tag this for quote/comment</form><div class='tvInfo'>";
               if (data['original_name']) {
               	if(data['original_name']!=data['name']){
               		resultStr +="<h4>Original Name: <span style='color:red!important; text-shadow: 2px 2px 2px black;font-size:22px;'>"+data['original_name']+"</span></h4>"
@@ -260,7 +261,18 @@ console.log("%c                                                     \n          
             						resultStr +="</div>"
             					}
             				}
-            			resultStr += "</ul></div></div>";
+            			resultStr += "</ul></div>";
+            			resultStr += "<div class='seasonRightNavLinks'><ol><div style='width:400px;' class='row'>"
+		            	for (i=0;i<entriesNum;i++){
+		            		if (i%12==0) {
+            					resultStr += "<div class='col-xs-6'>"
+            				}
+		            		resultStr += "<li><a href='#"+entriesId[i]+"'>"+entriesName[i]+"</a></li>";
+		            		if (i%11==0&&i!=0||i==entriesNum-1){
+          						resultStr +="</div>"
+          					}
+		            	}
+		            	resultStr += "</ol></div></div>";
             			resultStr += "<div id='"+tvShowId+data['season_number']+"'></div><div class='anchor'></div><h2 style='text-align:center; color:yellow;font-weight:bold;'>"+data['name']+"</h2>"
 	              	if (data['poster_path']==null) {
 		                resultStr +="<div class='seasonDiv'><img class='seasonPoster' src='/static/images/posterNull.png'/></div>";

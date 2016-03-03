@@ -152,8 +152,18 @@
   left: 900px;
 }
 
+.seasonRightNavLinks {
+  position: absolute;
+  top: 125px;
+  left: 715px;
+}
+
 .anchor {
   margin-top: 110px!important;
+}
+
+.showAnchor {
+  margin-top: 300px!important;
 }
 
 #title {
