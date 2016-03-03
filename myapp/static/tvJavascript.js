@@ -13,6 +13,13 @@ console.log("%c                                                     \n          
       success: function(data, textStatus, jqXHR){
         console.log("Success");
         console.log(data);
+        var entriesNum = data['results'].length;
+        var entriesName = [];
+        var entriesId = [];
+        for (i=0;i<entriesNum;i++){
+        	entriesName.push(data['results'][i]['name']);
+        	entriesId.push(data['results'][i]['id']);
+        }
         for (i=0;i<data['results'].length;i++){
           var movieId = data['results'][i]['id'];
           $.ajax({
@@ -21,7 +28,18 @@ console.log("%c                                                     \n          
             method: "GET",
             success: function(data, textStatus, jqXHR){
             	console.log('tv/id/credits: ',data);
-              var resultStr ="<li class='movieListings'><h2 style='color:yellow!important; text-shadow: 2px 2px 2px black;'>"+data['name']+"</h2><form style='display:none;' class='quoteCommentButton'><input type='checkbox' name='gender' value='other'> Tag this for quote/comment</form><div class='tvInfo'>";
+            	console.log('this should add nav links to each result');
+            	var resultStr = "<div style='position:relative;'><div class='tvNavLinks'><ul style='list-style:none;'>"
+            	for (i=0;i<data['number_of_seasons']+1;i++){
+            		resultStr += "<li><a href='#"+data['id']+i+"'>Season "+i+"</a></li>";
+            	}
+            	resultStr += "</ul></div>";
+            	resultStr += "<div class='tvRightNavLinks'><ol>"
+            	for (i=0;i<entriesNum;i++){
+            		resultStr += "<li><a href='#"+entriesId[i]+"'>"+entriesName[i]+"</a></li>";
+            	}
+            	resultStr += "</ol></div>";
+              resultStr += "<li class='movieListings'><h2 id='"+data['id']+"' style='color:yellow!important; text-shadow: 2px 2px 2px black;'>"+data['name']+"</h2><form style='display:none;' class='quoteCommentButton'><input type='checkbox' name='gender' value='other'> Tag this for quote/comment</form><div class='tvInfo'>";
               if (data['original_name']) {
               	if(data['original_name']!=data['name']){
               		resultStr +="<h4>Original Name: <span style='color:red!important; text-shadow: 2px 2px 2px black;font-size:22px;'>"+data['original_name']+"</span></h4>"
@@ -231,7 +249,19 @@ console.log("%c                                                     \n          
 	              method: "GET",
 	              success: function(data, textStatus, jqXHR){
 	              	console.log('tv/id/season/season#/credits: ',data);
-	              	resultStr +="<br></div><h2 style='text-align:center; color:yellow;font-weight:bold;'>"+data['name']+"</h2>"
+	              	resultStr +="<br></div>";
+	              	resultStr += "<div style='position:relative;'><div class='tvNavLinks'><ul style='list-style:none;'><div style='width:400px;' class='row'>"
+            				for (i=0;i<numSeasons;i++){
+            					if (i%15==0) {
+            						resultStr += "<div class='col-xs-3'>"
+            					}
+            					resultStr += "<li><a href='#"+tvShowId+i+"'>Season "+i+"</a></li>";
+            					if (i%14==0&&i!=0||i==numSeasons-1){
+            						resultStr +="</div>"
+            					}
+            				}
+            			resultStr += "</ul></div></div>";
+            			resultStr += "<div id='"+tvShowId+data['season_number']+"'></div><div class='anchor'></div><h2 style='text-align:center; color:yellow;font-weight:bold;'>"+data['name']+"</h2>"
 	              	if (data['poster_path']==null) {
 		                resultStr +="<div class='seasonDiv'><img class='seasonPoster' src='/static/images/posterNull.png'/></div>";
 		              } else {
@@ -287,6 +317,7 @@ console.log("%c                                                     \n          
 	              async:false
 	            });
 	          }
+	          	resultStr +="</div>"
               $("#results").append(resultStr);
               $(".castName").on('click', function(){
                 var personId = $(this).attr('title');
