@@ -26,5 +26,5 @@ urlpatterns = [
     url(r'^accounts/invalid/$', 'myapp.views.invalid_login'),
     url(r'^accounts/register/$', 'myapp.views.register_user'),
     url(r'^accounts/register_success/$', 'myapp.views.register_success'),
-    url(r'^avatar/', include('avatar.urls')),
+    url(r'^myapp/avatar/', include('avatar.urls')),
 ]

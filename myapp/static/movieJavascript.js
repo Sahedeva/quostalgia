@@ -1,16 +1,10 @@
 $(document).ready(function() {
 console.log("%c                                                     \n             *     ,MMM8&&&.            *            \n                  MMMM88&&&&&    .                   \n                 MMMM88&&&&&&&                       \n     *           MMM88&&&&&&&&                       \n                 MMM88&&&&&&&&                       \n                 'MMM88&&&&&&'                       \n                 'MMM88&&&&&&'                       \n                   'MMM8&&&'      *                  \n          |\\___/|                                    \n          )     (             .              '       \n         =\\     /=                                   \n           )===(       *                             \n          /     \\                                    \n          /     \\                                    \n          |     |                                    \n         /       \\                                   \n         \\       /                                   \n  _/\\_/\\_/\\__  _/_/\\_/\\_/\\_/\\_/\\_/\\_/\\_/\\_/\\_        \n  |  |  |  |( (  |  |  |  |  |  |  |  |  |  |        \n  |  |  |  | ) ) |  |  |  |  |  |  |  |  |  |        \n  |  |  |  |(_(  |  |  |  |  |  |  |  |  |  |        \n  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |        \n  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |        \n  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |        \n                                                     \n         consoleCat - by Bob   (MEOW)                \n                                                     ","color:white; background-color:black;");
 
-	$('.submit-btn').on('click', function(){
+	$('form').on('submit', function(){
+    $("#results").html("");
 		var title = $('#title').val();
-		console.log('title',title);
-    console.log("           __..--''``\\--....___   _..,_");
-    console.log("       _.-'    .-/\";  `        ``<._  ``-+'~=.");
-    console.log("   _.-' _..--.'_    \\                    `(^) )");
-    console.log("  ((..-'    (< _     ;_..__               ; `'");
-    console.log("             `-._,_)'      ``--...____..-'");
-    console.log(" ");
-    console.log("            consoleCat - by Bob");
+		console.log("%c                                                 \n           __..--''``\\--....___   _..,_          \n       _.-'    .-/\";  `        ``<._  ``-+'~=.   \n   _.-' _..--.'_    \\                    `(^) )  \n  ((..-'    (< _     ;_..__               ; `'   \n             `-._,_)'      ``--...____..-'       \n                                                 \n                                                 \n            consoleCat - by Bob                  \n                                                 ", "color:yellow;background-color:black;");
     $.ajax({
       url: "http://api.themoviedb.org/3/search/movie?api_key=5da4693192fc98b8390ac6cebfc81c82&query="+title,
       dataType: "json",
@@ -221,5 +215,6 @@ console.log("%c                                                     \n          
         }
       },
     });
+    return false; 
 	});
 });
