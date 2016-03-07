@@ -42,6 +42,12 @@
   left:-21px;
 }
 
+.movieNavLinks {
+  position: absolute;
+  top: 105px;
+  left: -153px;
+}
+
 .moviePoster {
 	height: 281px;
 	margin-left: 15px;

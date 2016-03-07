@@ -11,6 +11,14 @@ console.log("%c                                                     \n          
       method: "GET",
       success: function(data, textStatus, jqXHR){
         console.log("Success");
+        console.log(data);
+        var entriesNum = data['results'].length;
+        var entriesTitle = [];
+        var entriesId = [];
+        for (i=0;i<entriesNum;i++){
+          entriesTitle.push(data['results'][i]['title']);
+          entriesId.push(data['results'][i]['id']);
+        }
         for (i=0;i<data['results'].length;i++){
           var movieId = data['results'][i]['id'];
           $.ajax({
@@ -20,7 +28,13 @@ console.log("%c                                                     \n          
             success: function(data, textStatus, jqXHR){
               console.log(data);
               console.log(data['credits']['cast'])
-              var resultStr ="<li class='movieListings'><h2>"+data['title']+"</h2>"
+              var resultStr = "<div style='position:relative;'><div class='movieNavLinks'><ol>"
+              for (i=0;i<entriesNum;i++){
+                resultStr += "<li><a href='#"+entriesId[i]+"'>"+entriesTitle[i]+"</a></li>";
+              }
+              resultStr += "</ol></div></div>";
+              resultStr += "<div id='"+data['id']+"'></div><div class='anchor'></div>";
+              resultStr += "<li class='movieListings'><h2>"+data['title']+"</h2>"
               if (data['release_date']==null){
                       var easyDate = "Release date not available";
                     } else {
